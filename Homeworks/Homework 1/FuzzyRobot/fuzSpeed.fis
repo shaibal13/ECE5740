@@ -1,0 +1,33 @@
+[System]
+Name='fuzSpeed'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='turn'
+Range=[-50 50]
+NumMFs=3
+MF1='sharp':'trimf',[-50 -33.33 -16.67]
+MF2='moderate':'trimf',[-16.7 0 16.7]
+MF3='straight':'trimf',[16.67 33.33 50]
+
+[Output1]
+Name='speed'
+Range=[1 4]
+NumMFs=3
+MF1='slow':'trimf',[1 1.5 2]
+MF2='medium':'trimf',[1.5 2 2.5]
+MF3='fast':'trimf',[3 3.5 4]
+
+[Rules]
+1, 1 (1) : 1
+2, 2 (1) : 1
+3, 3 (1) : 1

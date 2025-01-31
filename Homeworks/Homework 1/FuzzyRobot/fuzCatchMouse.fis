@@ -1,0 +1,69 @@
+[System]
+Name='fuzCatchMouse'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='distance'
+Range=[0 100]
+NumMFs=5
+MF1='close':'trimf',[0 25 50]
+MF2='medium':'trimf',[25 50 75]
+MF3='far':'trimf',[50 75 100]
+MF4='very_close':'trimf',[0 0 25]
+MF5='very_far':'trimf',[75 100 100]
+
+[Input2]
+Name='angle'
+Range=[-180 180]
+NumMFs=5
+MF1='right':'trimf',[-180 -90 0]
+MF2='straight':'trimf',[-90 0 90]
+MF3='left':'trimf',[0 90 180]
+MF4='sharp_right':'trimf',[-180 -180 -90]
+MF5='sharp_left':'trimf',[90 180 180]
+
+[Output1]
+Name='turn'
+Range=[-50 50]
+NumMFs=5
+MF1='sharp_right':'trimf',[-50 -50 -50]
+MF2='right':'trimf',[-25 -25 -25]
+MF3='straight':'trimf',[0 0 0]
+MF4='sharp_left':'trimf',[50 50 50]
+MF5='left':'trimf',[25 25 25]
+
+[Rules]
+1 4, 1 (1) : 1
+1 1, 2 (1) : 1
+1 2, 3 (1) : 1
+1 3, 5 (1) : 1
+1 5, 4 (1) : 1
+4 4, 2 (1) : 1
+4 1, 2 (1) : 1
+4 2, 3 (1) : 1
+4 3, 5 (1) : 1
+4 5, 5 (1) : 1
+2 4, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 5 (1) : 1
+2 5, 4 (1) : 1
+3 4, 1 (1) : 1
+3 1, 2 (1) : 1
+3 2, 3 (1) : 1
+3 3, 5 (1) : 1
+3 5, 4 (1) : 1
+5 4, 1 (1) : 1
+5 1, 2 (1) : 1
+5 2, 3 (1) : 1
+5 3, 5 (1) : 1
+5 5, 4 (1) : 1
